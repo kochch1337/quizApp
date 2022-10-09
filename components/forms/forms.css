@@ -7,15 +7,11 @@
   gap: 10px;
 }
 
-fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-  border: none;
-}
-
-button {
+.button_submit {
   margin: auto;
   width: fit-content;
+}
+
+.chars-left {
+  text-align: right;
 }

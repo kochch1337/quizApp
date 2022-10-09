@@ -19,22 +19,26 @@
           type="text"
           name="question_new"
           id="question_new"
+          data-js="question_new"
           placeholder="Enter here your question"
           minlength="4"
-          maxlength="30"
+          maxlength="150"
           required
         ></textarea>
+        <p class="chars-left" data-js="question_left">150 characters left</p>
         <label for="answer_new">Your Answer:</label>
         <textarea
           type="text"
           name="answer_new"
           id="answer_new"
+          data-js="answer_new"
           placeholder="Enter here your answer"
           minlength="4"
-          maxlength="30"
+          maxlength="150"
           required
         ></textarea>
-        <label for="tag_new">Your Question:</label>
+        <p class="chars-left" data-js="answer_left">150 characters left</p>
+        <label for="tag_new">Tag:</label>
         <input
           type="text"
           name="tag_new"
@@ -43,8 +47,11 @@
           maxlength="30"
           required
         />
-        <button type="submit" data-js="submit">Create question</button>
+        <button class="button_submit" type="submit" data-js="submit">
+          Create question
+        </button>
       </form>
+      <ul class="card-list" data-js="card-list"></ul>
     </main>
 
     <nav class="navigation">

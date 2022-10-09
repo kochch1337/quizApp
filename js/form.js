@@ -1,6 +1,24 @@
 const main = document.querySelector('[data-js="main"]');
 const form = document.querySelector('[data-js="form"]');
 const submitButton = document.querySelector('[data-js="submit"]');
+const cardList = document.querySelector('[data-js="card-list"]');
+
+const questionNew = document.querySelector('[data-js="question_new"]');
+const answerNew = document.querySelector('[data-js="answer_new"]');
+const questionLeft = document.querySelector('[data-js="question_left"]');
+const answerLeft = document.querySelector('[data-js="answer_left"]');
+
+questionNew.addEventListener("input", (event) => {
+  const inputLength = event.target.value.length;
+  const charsLeft = 150 - inputLength;
+  questionLeft.textContent = `${charsLeft} characters left`;
+});
+
+answerNew.addEventListener("input", (event) => {
+  const inputLength = event.target.value.length;
+  const charsLeft = 150 - inputLength;
+  answerLeft.textContent = `${charsLeft} characters left`;
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -40,10 +58,10 @@ function addNewCard(question, answer, tag) {
   answerItem.setAttribute("data-js", "card__answer");
   answerItem.textContent = answer;
 
-  const tagList = document.createElement("u");
+  const tagList = document.createElement("ul");
   tagList.classList.add("card__tag-list");
 
-  const tagListItem = document.createElement("ul");
+  const tagListItem = document.createElement("li");
   tagListItem.classList.add("card__tag-list-item");
   tagListItem.textContent = `#${tag}`;
 
@@ -57,9 +75,10 @@ function addNewCard(question, answer, tag) {
   bookmarkItem.setAttribute("data-js", "data-js");
 
   const svgItem = document.createElement("svg");
-  bookmarkItem.classList.add("bookmark__icon");
-  bookmarkItem.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-  bookmarkItem.setAttribute("viewbox", "0 0 24 24");
+  svgItem.classList.add("bookmark__icon");
+  svgItem.classList.add("bookmark--active");
+  svgItem.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  svgItem.setAttribute("viewbox", "0 0 24 24");
 
   const svgPath = document.createElement("path");
   svgPath.setAttribute(
@@ -73,13 +92,17 @@ function addNewCard(question, answer, tag) {
   articleItem.append(answerItem);
   articleItem.append(tagList);
   tagList.append(tagListItem);
-  articleItem.append(bookmarkDiv);
-  bookmarkDiv.append(bookmarkItem);
-  bookmarkDiv.append(svgItem);
-  svgItem.append(svgPath);
 
-  main.append(cardListItem);
+  bookmarkItem.append(svgItem);
+  svgItem.append(svgPath);
+  bookmarkDiv.append(bookmarkItem);
+  articleItem.append(bookmarkDiv);
+
+  cardList.append(cardListItem);
 }
+
+/*
+ */
 
 /*
   <li class="card-list__item">
